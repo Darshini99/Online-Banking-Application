@@ -27,7 +27,7 @@ public class TransactionDetails {
 		t.setAccountNumber(account_number);
 		t.setAmount(amount);
 		if(t.getAmount()>=500) {
-			total = total +t.getAmount();
+			total = total +amount;
 			t.setTotal_balance(total);
 			System.out.println(TransactionDAO.depositMoney(t));
 			c.setTotalBalance(total);
@@ -93,7 +93,7 @@ public class TransactionDetails {
 		Connection con = DriverManager.getConnection(url, username, password);
 		PreparedStatement ps = con.prepareStatement("delete from withdraw where accountNumber=?");
 		ps.setLong(1, accountNumber);
-		boolean rowseffected =ps.execute();
+		boolean rowseffected = ps.execute();
 		return rowseffected;
 		}
 	public static boolean closeMyAccount(long accountNumber) throws ClassNotFoundException, SQLException  {

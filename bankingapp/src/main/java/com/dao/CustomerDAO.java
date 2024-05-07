@@ -63,6 +63,30 @@ public class CustomerDAO {
 		}
 	}
 	
+	public static void updateDepositBalance(double amount,long number) throws ClassNotFoundException, SQLException {
+		Class.forName("com.mysql.cj.jdbc.Driver");
+		Connection con = DriverManager.getConnection(url,username,password);
+		try {
+		PreparedStatement ps = con.prepareStatement("update deposit set totalBalance=? where accountNumber=?");
+		ps.setDouble(1, amount);
+		ps.setLong(2,number);
+		ps.execute();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	public static void updateWithdrawBalance(double amount,long number) throws ClassNotFoundException, SQLException {
+		Class.forName("com.mysql.cj.jdbc.Driver");
+		Connection con = DriverManager.getConnection(url,username,password);
+		try {
+		PreparedStatement ps = con.prepareStatement("update withdraw set totalBalance=? where accountNumber=?");
+		ps.setDouble(1, amount);
+		ps.setLong(2,number);
+		ps.execute();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
 	public static double customerTotalBalance(long number) throws ClassNotFoundException, SQLException {
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		Connection con = DriverManager.getConnection(url,username,password);
