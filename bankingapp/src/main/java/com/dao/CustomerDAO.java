@@ -75,6 +75,7 @@ public class CustomerDAO {
 			e.printStackTrace();
 		}
 	}
+	
 	public static void updateWithdrawBalance(double amount,long number) throws ClassNotFoundException, SQLException {
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		Connection con = DriverManager.getConnection(url,username,password);
@@ -87,6 +88,7 @@ public class CustomerDAO {
 			e.printStackTrace();
 		}
 	}
+	
 	public static double customerTotalBalance(long number) throws ClassNotFoundException, SQLException {
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		Connection con = DriverManager.getConnection(url,username,password);

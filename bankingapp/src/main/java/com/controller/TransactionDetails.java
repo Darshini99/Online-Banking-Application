@@ -104,8 +104,4 @@ public class TransactionDetails {
 		boolean rowseffected =ps.execute();
 		return rowseffected;
 		}
-
-	
-	
-	
 }
