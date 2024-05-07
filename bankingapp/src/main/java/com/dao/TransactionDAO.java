@@ -28,8 +28,8 @@ public class TransactionDAO {
 		ps.setDouble(5,t.getTotal_balance());
 		ps.execute();
 		CustomerDAO.updateCustomerBalance(t.getTotal_balance(),t.getAccountNumber());
-		CustomerDAO.updateDepositBalance(t.getTotal_balance(),t.getAccountNumber());
-		CustomerDAO.updateWithdrawBalance(t.getTotal_balance(),t.getAccountNumber());
+//		CustomerDAO.updateDepositBalance(t.getTotal_balance(),t.getAccountNumber());
+//		CustomerDAO.updateWithdrawBalance(t.getTotal_balance(),t.getAccountNumber());
 		return "Deposited Successfully";
 	}
 	
@@ -47,8 +47,8 @@ public class TransactionDAO {
 		ps.setDouble(5,t.getTotal_balance());
 		ps.execute();
 		CustomerDAO.updateCustomerBalance(t.getTotal_balance(),t.getAccountNumber());
-		CustomerDAO.updateDepositBalance(t.getTotal_balance(),t.getAccountNumber());
-		CustomerDAO.updateWithdrawBalance(t.getTotal_balance(),t.getAccountNumber());
+//		CustomerDAO.updateDepositBalance(t.getTotal_balance(),t.getAccountNumber());
+//		CustomerDAO.updateWithdrawBalance(t.getTotal_balance(),t.getAccountNumber());
 		return "Please collect your amount";
 	}
 }
