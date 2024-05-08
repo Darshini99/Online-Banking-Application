@@ -12,6 +12,7 @@ public class UpdateCustomerDAO {
 	static String username ="root";
 	static String password = "root";
 	
+	//Setting updated customer Phone number into database tables
 	public static String updatePhoneNumber(Customer customer) throws ClassNotFoundException, SQLException {
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		Connection con = DriverManager.getConnection(url, username, password);
@@ -23,6 +24,7 @@ public class UpdateCustomerDAO {
 		
 		}
 	
+	//Setting updated customer Aadhar number into database tables
 	public static String updateAddress(Customer customer) throws SQLException, ClassNotFoundException {
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		Connection con = DriverManager.getConnection(url, username, password);

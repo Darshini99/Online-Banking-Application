@@ -12,7 +12,7 @@ public class CustomerDAO {
 	static String url = "jdbc:mysql://localhost:3306/bankapplication";
 	static String username ="root";
 	static String password = "root";
-	
+	//creating customer and adding new customer into the database
 	public static String createAccount(Customer customer) throws ClassNotFoundException, SQLException {
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		Connection con = DriverManager.getConnection(url,username,password);
@@ -33,7 +33,8 @@ public class CustomerDAO {
 		return "created succesfully";
 	}
 	
-	public static void ValidateAccount(Customer customer) throws SQLException, ClassNotFoundException {
+	//After SignIn checking whether user is Existed or Not 
+	public static void validateAccount(Customer customer) throws SQLException, ClassNotFoundException {
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		Connection con = DriverManager.getConnection(url,username,password);
 		try {
@@ -50,6 +51,7 @@ public class CustomerDAO {
 		}
 	}
 	
+	//Updating customer balance after deposit/withdraw
 	public static void updateCustomerBalance(double amount,long number) throws ClassNotFoundException, SQLException {
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		Connection con = DriverManager.getConnection(url,username,password);
@@ -63,6 +65,7 @@ public class CustomerDAO {
 		}
 	}
 	
+	//Retrieving customer total balance
 	public static double customerTotalBalance(long number) throws ClassNotFoundException, SQLException {
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		Connection con = DriverManager.getConnection(url,username,password);

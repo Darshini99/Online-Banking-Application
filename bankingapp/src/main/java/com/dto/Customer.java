@@ -3,6 +3,7 @@ package com.dto;
 import java.time.LocalDateTime;
 
 public class Customer{
+	//Customer basic details to create account
 	String first_name;
 	String last_name;
 	int age;
@@ -14,25 +15,16 @@ public class Customer{
 	long account_number;
 	double totalBalance;
 	
+	//local time generation
 	LocalDateTime lt = LocalDateTime.now();
 	String accountCreatedDate = lt.getDayOfMonth()+"-"+lt.getMonthValue()+"-"+lt.getYear()+"  "+lt.getHour()+":"+lt.getMinute()+":"+lt.getSecond();
 	
-	public String getAccountCreatedDate() {
-		return accountCreatedDate;
-	}
-	public double getTotalBalance() {
-		return totalBalance;
-	}
-
-	public void setTotalBalance(double totalBalance) {
-		this.totalBalance = totalBalance;
-	}
-
+	//Non-parameterized constructor
 	public Customer() {
 		super();
 	}
 	
-	
+	//Parameterized constructor
 	public Customer(String first_name, String last_name, int age, String account_type, String gender, long aadhar,
 			long number, String address, long account_number, double totalBalance) {
 		super();
@@ -47,7 +39,19 @@ public class Customer{
 		this.account_number = account_number;
 		this.totalBalance = totalBalance;
 	}
+	
+//All setters and getters
+	public String getAccountCreatedDate() {
+		return accountCreatedDate;
+	}
+	public double getTotalBalance() {
+		return totalBalance;
+	}
 
+	public void setTotalBalance(double totalBalance) {
+		this.totalBalance = totalBalance;
+	}
+	
 	public String getFirst_name() {
 		return first_name;
 	}
@@ -102,7 +106,8 @@ public class Customer{
 	public void setAccount_number(long account_number) {
 		this.account_number = account_number;
 	}
-
+	
+//ToString method
 	@Override
 	public String toString() {
 		return "Customer [first_name=" + first_name + ", last_name=" + last_name + ", age=" + age + ", account_type="

@@ -14,6 +14,7 @@ public class TransactionDAO {
 	static String username ="root";
 	static String password = "root";
 	
+	//For setting details of deposit money into the database table
 	public static String depositMoney(Transactions t) throws ClassNotFoundException, SQLException {
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		Connection con = DriverManager.getConnection(url,username,password);
@@ -21,18 +22,17 @@ public class TransactionDAO {
 		String current_datetime = lt.getDayOfMonth()+"-"+lt.getMonthValue()+"-"+lt.getYear()+"  "+lt.getHour()+":"+lt.getMinute()+":"+lt.getSecond();
 		PreparedStatement ps = con.prepareStatement("insert into deposit values(?,?,?,?,?)");
 		Random r = new Random();
-		ps.setInt(1,r.nextInt(100));
+		ps.setInt(1,r.nextInt(10000));
 		ps.setLong(2,t.getAccountNumber());
 		ps.setDouble(3,t.getAmount());
 		ps.setString(4,current_datetime);
 		ps.setDouble(5,t.getTotal_balance());
 		ps.execute();
 		CustomerDAO.updateCustomerBalance(t.getTotal_balance(),t.getAccountNumber());
-//		CustomerDAO.updateDepositBalance(t.getTotal_balance(),t.getAccountNumber());
-//		CustomerDAO.updateWithdrawBalance(t.getTotal_balance(),t.getAccountNumber());
 		return "Deposited Successfully";
 	}
 	
+	//For setting details of withdraw money into the database table
 	public static String withdrawMoney(Transactions t) throws ClassNotFoundException, SQLException {
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		Connection con = DriverManager.getConnection(url,username,password);
@@ -40,15 +40,13 @@ public class TransactionDAO {
 		String current_datetime = lt.getDayOfMonth()+"-"+lt.getMonthValue()+"-"+lt.getYear()+"  "+lt.getHour()+":"+lt.getMinute()+":"+lt.getSecond();
 		PreparedStatement ps = con.prepareStatement("insert into withdraw values(?,?,?,?,?)");
 		Random r = new Random();
-		ps.setInt(1,r.nextInt(100));
+		ps.setInt(1,r.nextInt(10000));
 		ps.setLong(2,t.getAccountNumber());
 		ps.setDouble(3,t.getAmount());
 		ps.setString(4,current_datetime);
 		ps.setDouble(5,t.getTotal_balance());
 		ps.execute();
 		CustomerDAO.updateCustomerBalance(t.getTotal_balance(),t.getAccountNumber());
-//		CustomerDAO.updateDepositBalance(t.getTotal_balance(),t.getAccountNumber());
-//		CustomerDAO.updateWithdrawBalance(t.getTotal_balance(),t.getAccountNumber());
 		return "Please collect your amount";
 	}
 }

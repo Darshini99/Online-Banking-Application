@@ -13,7 +13,6 @@ public class CustomerDetails {
 		public static void main(String[] args) throws ClassNotFoundException, SQLException {
 			UserValidate u = new UserValidate();
 			Customer customer = new Customer();
-			
 			String first_name;
 			String last_name;
 			System.out.println("Welcome to our Bank!!!!");
@@ -22,24 +21,45 @@ public class CustomerDetails {
 			System.out.println("Enter your choice: ");
 			int in = sc.nextInt();
 			switch(in){
+			//Functionality for Customer Login/SignIn
 			case 1:
 				System.out.println("enter account number: ");
 				long myaccount_number = sc.nextLong();
 				customer.setAccount_number(myaccount_number);
-				CustomerDAO.ValidateAccount(customer);
+				CustomerDAO.validateAccount(customer);
 				break;
 			case 2:
+				//For User SignUp/Register with their details
 				System.out.println("enter your First Name: ");
 			    first_name = sc.next();
+			    //To validate users first name
+			    if(UserValidate.validateName(first_name)) {}
+			    else {
+			    	System.out.println("Please enter Alphabets only");
+			    	System.out.println("exiting the process......");
+			    	break;}
 				System.out.println("enter your Last Name: ");
 				last_name = sc.next();
-				System.out.println("enter your age greater than 10: ");
+				//validating users last name
+				if(UserValidate.validateName(last_name)) {}
+				else {
+					System.out.println("Please enter Alphabets only");
+					System.out.println("exiting the process......");
+			    	break;}
+				System.out.println("enter your age greater than 12: ");
 				int age = sc.nextInt();
 				String account_type=u.setAccountType(age);
 				System.out.println("enter your Gender: ");
 				String gender = sc.next();
+				//validating users gender
+				if(UserValidate.validateName(gender)) {}
+				else {
+					System.out.println("Please enter Alphabets only");
+					System.out.println("exiting the process......");
+			    	break;}
 				System.out.println("enter your aadhar Number: ");
 				long aadhar = sc.nextLong();
+				//calling validateAadhar to validate
 				if(u.validateAadhar(aadhar)) {}
 				else {
 					System.out.println("Dear User please enter a valid aadhar number of 12 digits");
@@ -49,6 +69,7 @@ public class CustomerDetails {
 				}
 				System.out.println("enter phone Number: ");
 				long number = sc.nextLong();
+				//calling validatePhone to validate
 				if(u.validatePhone(number)) {}
 				else {
 					System.out.println("Dear User please enter valid phone number of 10 digits and starts with 6/7/8/9 only");
@@ -59,11 +80,18 @@ public class CustomerDetails {
 				System.out.println("enter your address: ");
 				String address = sc.nextLine();
 				address = sc.nextLine();
+				//validating users address
+				if(UserValidate.validateName(address)) {}
+				else {
+					System.out.println("Please enter Alphabets only");
+					System.out.println("exiting the process......");
+			    	break;}
 				System.out.println("Thank you for all the detalis.. Just wait a moment we will generate you an account number");
+				//Generating account number
 				long account_number = (long)(Math.random()*900000000000L) + 100000000000L;
 				if (account_number < 0) account_number *= -1;
 		        sc.close();
-				
+				//setting data into customer class
 				customer.setFirst_name(first_name);
 				customer.setLast_name(last_name);
 				customer.setAge(age);
@@ -78,7 +106,7 @@ public class CustomerDetails {
 				System.out.println("Thanks for creating an account in our bank!!!!!");
 				System.out.println("Details are: ");
 				System.out.println("------------------------------------------");
-				System.out.println("account holder name: "+first_name);
+				System.out.println("account holder name: "+first_name+" "+last_name);
 				System.out.println("Account Number: "+account_number);
 				System.out.println("-------------------------------------------");
 				break;
@@ -86,13 +114,15 @@ public class CustomerDetails {
 					System.out.println("Dear user please choose the correct choice!!!!!");
 			}
 		}
+		//Transactional operations
 		public static void TransactionOpeartions(long accountnum) throws ClassNotFoundException, SQLException {
 			System.out.println("welcome Thanks for choosing our bank!!!!");
 			System.out.println("--------- OPTIONS ---------");
 			System.out.println("Dear Customer please enter \n1 for Deposit"
 					+ "\n2 for WithDrawal \n3 for Checking Balance\n"
-					+ "4 for other\n5 to see all transactions \n6 to close the account\n7 to exit");
+					+ "4 for other updates\n5 to see all transactions \n6 to close the account\n7 to exit");
 			int in = sc.nextInt();
+			//Based on the user choice feature will be called and executed
 			switch(in) {
 			case 1:
 				TransactionDetails.depositAmount(accountnum);

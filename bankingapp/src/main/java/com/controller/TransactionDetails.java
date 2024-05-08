@@ -17,7 +17,8 @@ public class TransactionDetails {
 	static String url = "jdbc:mysql://localhost:3306/bankapplication";
 	static String username ="root";
 	static String password = "root";
-
+	
+	//Functionality for depositing amount
 	public static void depositAmount(long account_number) throws ClassNotFoundException, SQLException {
 		Transactions t = new Transactions();
 		Customer c = new Customer();
@@ -36,6 +37,8 @@ public class TransactionDetails {
 			System.out.println("insufficient balance to deposit Please deposit amount more than 500");
 		}
 	}
+	
+	//Functionality for withdraw amount
 	public static void withdrawAmount(long account_number) throws ClassNotFoundException, SQLException {
 		Transactions t = new Transactions();
 		System.out.println("enter amount to withdraw: ");
@@ -53,12 +56,13 @@ public class TransactionDetails {
 		}
 	}
 	
+	//To see all the transactions(history) by a customer
 	public static void allMyTransactions(long accountNumber) throws ClassNotFoundException, SQLException {
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		Connection con = DriverManager.getConnection(url, username, password);
 		System.out.println("Your transactions are : ");
 		PreparedStatement ps1 = con.prepareStatement("select * from deposit where accountNumber = ?");
-		
+		//Deposit details
 		ps1.setLong(1, accountNumber);
 		System.out.println("DepositId\t" + "DepositMoney\t"+"TotalBalance\t"+"\tDate\t");
 		System.out.println("-------------------------------------------------------------------------");
@@ -67,7 +71,7 @@ public class TransactionDetails {
 			System.out.println(rs1.getInt("did")+"\t\t"+rs1.getDouble("depositMoney")+"\t\t"+rs1.getDouble("totalBalance")+"\t\t"+rs1.getString("date"));
 		}
 		System.out.println("--------------------------------------------------------------------------");
-		
+		//withdraw details
 		PreparedStatement ps2 = con.prepareStatement("select Wid,withdrawMoney,totalBalance,date from withdraw where accountNumber = ?");
 		ps2.setLong(1, accountNumber);
 		System.out.println();
@@ -80,6 +84,7 @@ public class TransactionDetails {
 		System.out.println("---------------------------------------------------------------------------");
 	}
 	
+	//To delete deposit details of a customer from database
 	public static boolean depositTableUpdate(long accountNumber) throws ClassNotFoundException, SQLException {
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		Connection con = DriverManager.getConnection(url, username, password);
@@ -87,7 +92,9 @@ public class TransactionDetails {
 		ps.setLong(1, accountNumber);
 		boolean rowseffected =ps.execute();
 		return rowseffected;
-		}
+	}
+	
+	//To delete withdraw details of a customer from database
 	public static boolean withdrawTableUpdate(long accountNumber) throws ClassNotFoundException, SQLException {
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		Connection con = DriverManager.getConnection(url, username, password);
@@ -95,7 +102,8 @@ public class TransactionDetails {
 		ps.setLong(1, accountNumber);
 		boolean rowseffected = ps.execute();
 		return rowseffected;
-		}
+	}
+	//To delete/close customers account from database
 	public static boolean closeMyAccount(long accountNumber) throws ClassNotFoundException, SQLException  {
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		Connection con = DriverManager.getConnection(url, username, password);
@@ -103,5 +111,5 @@ public class TransactionDetails {
 		ps.setLong(1, accountNumber);
 		boolean rowseffected =ps.execute();
 		return rowseffected;
-		}
+	}
 }

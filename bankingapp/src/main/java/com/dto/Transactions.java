@@ -5,9 +5,10 @@ public class Transactions {
 	double total_balance ;
 	long accountNumber;
 
-	public Transactions() {
-	}
+	//parameterized constructor
+	public Transactions() {}
 
+	//All getters and setters
 	public long getAccountNumber() {
 		return accountNumber;
 	}
@@ -31,7 +32,7 @@ public class Transactions {
 	public void setTotal_balance(double total_balance) {
 		this.total_balance = total_balance;
 	}
-
+//parameterized constructor
 	public Transactions(double amount, double total_balance, long accountNumber) {
 		super();
 		this.amount = amount;
