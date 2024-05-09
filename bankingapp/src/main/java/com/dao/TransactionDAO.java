@@ -22,7 +22,7 @@ public class TransactionDAO {
 		String current_datetime = lt.getDayOfMonth()+"-"+lt.getMonthValue()+"-"+lt.getYear()+"  "+lt.getHour()+":"+lt.getMinute()+":"+lt.getSecond();
 		PreparedStatement ps = con.prepareStatement("insert into deposit values(?,?,?,?,?)");
 		Random r = new Random();
-		ps.setInt(1,r.nextInt(10000));
+		ps.setInt(1,r.nextInt(999,9999));
 		ps.setLong(2,t.getAccountNumber());
 		ps.setDouble(3,t.getAmount());
 		ps.setString(4,current_datetime);
@@ -40,13 +40,13 @@ public class TransactionDAO {
 		String current_datetime = lt.getDayOfMonth()+"-"+lt.getMonthValue()+"-"+lt.getYear()+"  "+lt.getHour()+":"+lt.getMinute()+":"+lt.getSecond();
 		PreparedStatement ps = con.prepareStatement("insert into withdraw values(?,?,?,?,?)");
 		Random r = new Random();
-		ps.setInt(1,r.nextInt(10000));
+		ps.setInt(1,r.nextInt(999,9999));
 		ps.setLong(2,t.getAccountNumber());
 		ps.setDouble(3,t.getAmount());
 		ps.setString(4,current_datetime);
 		ps.setDouble(5,t.getTotal_balance());
 		ps.execute();
 		CustomerDAO.updateCustomerBalance(t.getTotal_balance(),t.getAccountNumber());
-		return "Please collect your amount";
+		return "Please collect your Amount";
 	}
 }

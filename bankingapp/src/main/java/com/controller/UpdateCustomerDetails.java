@@ -15,7 +15,7 @@ public class UpdateCustomerDetails {
 	//To update customers Phone Number
 	case 1:
 		customer.setAccount_number(accountnum);
-		System.out.println("enter new phone number: ");
+		System.out.println("Enter new phone number: ");
 		long new_number = sc.nextLong();
 		customer.setNumber(new_number);
 		System.out.println(UpdateCustomerDAO.updatePhoneNumber(customer));
@@ -23,7 +23,7 @@ public class UpdateCustomerDetails {
 		//To update customers Address
 	case 2:
 		customer.setAccount_number(accountnum);
-		System.out.println("enter address: ");
+		System.out.println("Enter new address: ");
 		String address = sc.next();
 		customer.setAddress(address);
 		System.out.println(UpdateCustomerDAO.updateAddress(customer));

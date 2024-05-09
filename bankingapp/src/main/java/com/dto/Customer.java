@@ -40,7 +40,7 @@ public class Customer{
 		this.totalBalance = totalBalance;
 	}
 	
-//All setters and getters
+  //All setters and getters
 	public String getAccountCreatedDate() {
 		return accountCreatedDate;
 	}
@@ -107,7 +107,7 @@ public class Customer{
 		this.account_number = account_number;
 	}
 	
-//ToString method
+  //ToString method
 	@Override
 	public String toString() {
 		return "Customer [first_name=" + first_name + ", last_name=" + last_name + ", age=" + age + ", account_type="

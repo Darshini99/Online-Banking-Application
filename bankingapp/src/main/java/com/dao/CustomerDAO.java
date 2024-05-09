@@ -30,7 +30,7 @@ public class CustomerDAO {
 		ps.setString(11,customer.getAccountCreatedDate());
 		ps.execute();
 		con.close();
-		return "created succesfully";
+		return "Created Succesfully";
 	}
 	
 	//After SignIn checking whether user is Existed or Not 
@@ -44,7 +44,7 @@ public class CustomerDAO {
 		if(rs!=null && rs.next()) {
 				CustomerDetails.TransactionOpeartions(rs.getLong(1));
 		}else {
-			System.out.println("Dear Customer,No matched acoounts found Please check your account Number!!!");
+			System.out.println("Dear Customer,No matched acoounts found Please check your Account Number!!!");
 		}
 		}catch(Exception e) {
 			e.printStackTrace();

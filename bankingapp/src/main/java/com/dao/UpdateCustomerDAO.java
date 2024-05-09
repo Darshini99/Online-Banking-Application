@@ -20,9 +20,8 @@ public class UpdateCustomerDAO {
 		ps.setLong(1,customer.getNumber());
 		ps.setLong(2,customer.getAccount_number());
 		ps.execute();
-			return "updated successfully";
-		
-		}
+			return "Updated Successfully";
+	}
 	
 	//Setting updated customer Aadhar number into database tables
 	public static String updateAddress(Customer customer) throws SQLException, ClassNotFoundException {
@@ -32,7 +31,7 @@ public class UpdateCustomerDAO {
 		ps.setString(1,customer.getAddress());
 		ps.setLong(2,customer.getAccount_number());
 		ps.execute();
-		return "updated successfully";
+		return "Updated Successfully";
 		
 	}
 	

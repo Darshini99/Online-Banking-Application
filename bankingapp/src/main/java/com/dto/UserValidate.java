@@ -11,6 +11,12 @@ public class UserValidate {
 			 return name.matches("[a-zA-Z]+");
 	}
 	
+	public static boolean validateGender(String gender) {
+		if(gender.equalsIgnoreCase("female")||gender.equalsIgnoreCase("male"))
+			return true;
+		else return false;
+	}
+	
 	//Validating Users Aadhar Number
 	public boolean validateAadhar(long aadhar) {
 		String l = String.valueOf(aadhar);
@@ -30,13 +36,12 @@ public class UserValidate {
 	//Setting account type whether Major Account or Minor Account
 	public String setAccountType(int age) {
 		String account_type="";
-		if(age>=18 && age<=100) {
+		if(age>=18 && age<100) {
 			 account_type="major";
 		}
-		if(age>12 &age<18){
+		if(age>10 &age<18){
 			account_type ="minor";
 		}
-
 		return account_type;
 	}
 }
