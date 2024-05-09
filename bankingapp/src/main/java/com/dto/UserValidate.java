@@ -11,6 +11,7 @@ public class UserValidate {
 			 return name.matches("[a-zA-Z]+");
 	}
 	
+	//Validating and accepting gender
 	public static boolean validateGender(String gender) {
 		if(gender.equalsIgnoreCase("female")||gender.equalsIgnoreCase("male"))
 			return true;
