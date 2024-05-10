@@ -34,20 +34,20 @@ public class CustomerDAO {
 	}
 	
 	//After SignIn checking whether user is Existed or Not 
-	public static void validateAccount(Customer customer) throws SQLException, ClassNotFoundException {
-		Class.forName("com.mysql.cj.jdbc.Driver");
-		Connection con = DriverManager.getConnection(url,username,password);
+	public static void validateAccount(Customer customer)throws ClassNotFoundException, SQLException{
 		try {
-		PreparedStatement ps = con.prepareStatement("select * from customer where accountNumber=?");
-		ps.setLong(1,customer.getAccount_number());
-		ResultSet rs = ps.executeQuery();
-		if(rs!=null && rs.next()) {
-				CustomerDetails.TransactionOpeartions(rs.getLong(1));
-		}else {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection con = DriverManager.getConnection(url,username,password);
+			PreparedStatement ps = con.prepareStatement("select * from customer where accountNumber=?");
+			ps.setLong(1,customer.getAccount_number());
+			ResultSet rs = ps.executeQuery();
+			if(rs!=null && rs.next()) {
+				CustomerDetails.transactionOpeartions(rs.getLong(1));
+			}else {
 			System.out.println("Dear Customer,No matched acoounts found Please check your Account Number!!!");
-		}
+			}
 		}catch(Exception e) {
-			e.printStackTrace();
+			
 		}
 	}
 	

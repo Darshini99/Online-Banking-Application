@@ -5,9 +5,10 @@ import java.util.Scanner;
 import com.dao.UpdateCustomerDAO;
 import com.dto.Customer;
 
+
 public class UpdateCustomerDetails {
 	//Updating user data based on user choice
-	public static void UpdateDetails(long accountnum) throws ClassNotFoundException, SQLException {
+	public static void UpdateDetails(long accountnum) throws ClassNotFoundException, SQLException{
 	Customer customer = new Customer();
 	Scanner sc = new Scanner(System.in);
 	int change = sc.nextInt();
@@ -29,6 +30,7 @@ public class UpdateCustomerDetails {
 		System.out.println(UpdateCustomerDAO.updateAddress(customer));
 		break;
 	}
+	CustomerDetails.endRequest(accountnum);
 	sc.close();
 	}
 }

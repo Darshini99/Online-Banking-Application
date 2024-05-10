@@ -36,6 +36,7 @@ public class TransactionDetails {
 		}else {
 			System.out.println("Insufficient balance to deposit Please deposit amount more than 500");
 		}
+		CustomerDetails.endRequest(account_number);
 	}
 	
 	//Functionality for withdraw amount
@@ -54,6 +55,7 @@ public class TransactionDetails {
 		}else {
 			System.out.println("Insufficient balance to Withdraw not possible");
 		}
+		CustomerDetails.endRequest(account_number);
 	}
 	
 	//To see all the transactions(history) of a customer
@@ -82,6 +84,7 @@ public class TransactionDetails {
 			System.out.println(rs2.getInt("Wid")+"\t\t"+rs2.getDouble("withdrawMoney")+"\t\t"+rs2.getDouble("totalBalance")+"\t\t"+rs2.getString("date"));
 		}
 		System.out.println("---------------------------------------------------------------------------");
+		CustomerDetails.endRequest(accountNumber);
 	}
 	
 	//To delete deposit details of a customer from database

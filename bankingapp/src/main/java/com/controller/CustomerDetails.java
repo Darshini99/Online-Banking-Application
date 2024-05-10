@@ -9,7 +9,7 @@ import com.dto.UserValidate;
 
 public class CustomerDetails {
 	static Scanner sc = new Scanner(System.in);
-	public static void main(String[] args) throws ClassNotFoundException, SQLException {
+	public static void startProcess() throws ClassNotFoundException, SQLException {
 		UserValidate u = new UserValidate();
 		Customer customer = new Customer();
 		String first_name;
@@ -17,6 +17,7 @@ public class CustomerDetails {
 		System.out.println("Welcome to our Bank!!!!");
 		System.out.println("Already have an Account.Please enter 1 to Signin/Login");
 		System.out.println("Don't have an Account.Please enter 2 to SignUp");
+		System.out.println("enter 3 to exit from the proces!!!");
 		System.out.println("Enter your choice: ");
 		int in = sc.nextInt();
 		switch(in){
@@ -111,13 +112,18 @@ public class CustomerDetails {
 				System.out.println("Account Number: "+account_number);
 				System.out.println("-------------------------------------------");
 				break;
+			case 3:
+				System.out.println("Exiting from the process..........");
+				break;
 			default:
-				System.out.println("Dear user please choose the correct choice!!!!!");
+				System.out.println("Dear user please enter the correct choice!!!!!");
+				System.out.println("Try again.....");
+				startProcess();
 			}
-		}
+	}
 		
 		//Transactional operations
-	public static void TransactionOpeartions(long accountnum) throws ClassNotFoundException, SQLException {
+	public static void transactionOpeartions(long accountnum) throws ClassNotFoundException, SQLException {
 		System.out.println("Welcome Thanks for choosing our bank!!!!");
 		System.out.println("--------- OPTIONS ---------");
 		System.out.println("Dear Customer please enter \n1 for Deposit"
@@ -162,7 +168,7 @@ public class CustomerDetails {
 					}catch(Exception e) {System.out.println("not closed");}
 				}else {
 						System.out.println("Please proceed with your preferences......");
-				}
+						}
 				break;
 			case 7:
 				System.out.println("Exitting .............");
@@ -172,4 +178,26 @@ public class CustomerDetails {
 				System.out.println("Dear customer please choose correct option.......");
 		}
 	}
+	
+	public static void endRequest(long account_number) throws ClassNotFoundException, SQLException{
+		System.out.println("Would you like to continue...(Y/N)");
+		char in = sc.next().charAt(0);
+		switch(in) {
+		case 'Y':
+		case 'y':
+			CustomerDetails.transactionOpeartions(account_number);
+			break;
+		case 'N':
+		case 'n':
+			System.out.println("Thank you for visiting .. Please come again........");
+			CustomerDetails.startProcess();
+			break;
+		default:
+			System.out.println("Please enter y or n only....");
+			endRequest(account_number);
+		}
+	}
+	public static void main(String[] args) throws ClassNotFoundException, SQLException {
+		startProcess();
+		}
 }
